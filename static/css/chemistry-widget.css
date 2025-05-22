@@ -1,0 +1,619 @@
+/* 优化后的化学品采购助手样式 */
+#chemistry-widget {
+  position: fixed;
+  top: 70px;
+  right: -380px;
+  width: 380px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  border-radius: 12px 0 0 12px;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+  transition: right 0.4s ease; /* 修改：更快的过渡效果 */
+  z-index: 10000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  overflow: hidden;
+}
+
+.dark-mode #chemistry-widget {
+  box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+}
+
+#chemistry-widget.open {
+  right: 0;
+}
+
+/* 小组件手柄 */
+.widget-handle {
+  width: 36px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px 0 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.widget-handle:hover {
+  background: rgba(255,255,255,0.25);
+  width: 42px;
+}
+
+.widget-handle span {
+  transform: scale(1.2);
+}
+
+/* 小组件内容区 */
+.widget-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 0 0 0 12px;
+  overflow: hidden;
+}
+
+.dark-mode .widget-content {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+.widget-header {
+  background: #3b82f6;
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-title {
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.3px;
+}
+
+.widget-title span:first-child {
+  font-size: 20px;
+}
+
+.widget-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.widget-close:hover {
+  background: rgba(255,255,255,0.3);
+  transform: rotate(90deg);
+}
+
+/* 小组件主体 */
+.widget-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f8fafc;
+}
+
+.dark-mode .widget-body {
+  background: #111827;
+}
+
+.widget-section {
+  margin-bottom: 6px;
+}
+
+.widget-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dark-mode .widget-section label {
+  color: #e5e7eb;
+}
+
+.widget-section label i {
+  color: #3b82f6;
+}
+
+.widget-section select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.widget-section select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.dark-mode .widget-section select {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e5e7eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.widget-section textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 140px;
+  resize: vertical;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.widget-section textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.dark-mode .widget-section textarea {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+.example-tip {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.dark-mode .example-tip {
+  color: #94a3b8;
+}
+
+.example-tip i {
+  margin-top: 2px;
+  color: #3b82f6;
+}
+
+.chemical-formatter {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.formula-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #e0e7ff;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.formula-btn:hover {
+  background: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+.dark-mode .formula-btn {
+  background: #312e81;
+  color: #a5b4fc;
+  border-color: #4338ca;
+}
+
+.dark-mode .formula-btn:hover {
+  background: #4338ca;
+}
+
+.widget-button {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s;
+}
+
+.widget-button:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.widget-button:active {
+  transform: translateY(0);
+}
+
+.widget-button:disabled {
+  background: linear-gradient(to right, #93c5fd, #60a5fa);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 进度条区域 */
+.progress-area {
+  margin-top: 16px;
+  display: none;
+  background: white;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.dark-mode .progress-area {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.progress-title {
+  font-weight: 500;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.dark-mode .progress-title {
+  color: #f9fafb;
+}
+
+.progress-text {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.dark-mode .progress-text {
+  color: #9ca3af;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dark-mode .progress-bar-container {
+  background: #4b5563;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  transition: width 0.3s ease;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.dark-mode .progress-stats {
+  color: #9ca3af;
+}
+
+/* 鼠标触发区域 - 修改：增加宽度以便更容易触发 */
+.widget-trigger-area {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40px; /* 修改：从20px增加到40px */
+  height: 100%;
+  z-index: 9999;
+}
+
+/* 订单摘要样式 */
+.order-summary {
+  background-color: #f0f9ff;
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 5px solid #3b82f6;
+  margin: 16px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .order-summary {
+  background-color: #0c4a6e;
+  border-left-color: #0ea5e9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.order-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.order-summary-icon {
+  background: #dbeafe;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.dark-mode .order-summary-icon {
+  background: #0c4a6e;
+}
+
+.order-summary h3 {
+  margin: 0;
+  color: #1e40af;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dark-mode .order-summary h3 {
+  color: #38bdf8;
+}
+
+.order-summary ul {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+.order-summary li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 6px;
+}
+
+.order-summary li::before {
+  content: "•";
+  color: #3b82f6;
+  font-weight: bold;
+  position: absolute;
+  left: -12px;
+}
+
+.order-summary p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-summary p strong {
+  color: #1e40af;
+  min-width: 140px;
+  display: inline-block;
+}
+
+.dark-mode .order-summary p strong {
+  color: #38bdf8;
+}
+
+.order-summary-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-id {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.dark-mode .order-id {
+  background: #0c4a6e;
+  color: #38bdf8;
+}
+
+/* 分子式样式 */
+.molecule-formula {
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.molecule-formula sub {
+  font-size: 10px;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  bottom: -0.3em;
+  margin-left: 1px;
+}
+
+.molecule-formula .element {
+  color: #3b82f6;
+}
+
+.dark-mode .molecule-formula .element {
+  color: #60a5fa;
+}
+
+/* 气泡提示 */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #27272a;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #27272a transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 通知样式 */
+.chem-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.chem-notification.success {
+  background-color: #ecfdf5;
+  border-left-color: #10b981;
+}
+
+.chem-notification.error {
+  background-color: #fef2f2;
+  border-left-color: #ef4444;
+}
+
+.notification-icon {
+  font-size: 18px;
+}
+
+.notification-message {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #1e40af;
+}
+
+.chem-notification.success .notification-message {
+  color: #065f46;
+}
+
+.chem-notification.error .notification-message {
+  color: #b91c1c;
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  #chemistry-widget {
+    width: 320px;
+    right: -320px;
+  }
+  
+  .widget-header {
+    padding: 12px 16px;
+  }
+  
+  .widget-body {
+    padding: 16px;
+  }
+  
+  .widget-section select,
+  .widget-section textarea {
+    padding: 10px 12px;
+  }
+}
