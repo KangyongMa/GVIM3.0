@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Advanced Chemistry Lab AI Assistant{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Create Your Chemistry AI Assistant Account</h1>
+<form method="POST" action="{{ url_for('register') }}" class="space-y-6">
+    <div>
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-input" placeholder="e.g., chem_user123" required>
+    </div>
+    <div>
+        <label for="email" class="form-label">Email Address</label> <input type="email" name="email" id="email" class="form-input" placeholder="e.g., user@example.com" required> </div>
+    <div>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-input" placeholder="••••••••" required>
+    </div>
+    <button type="submit" class="btn-primary">Register Now</button>
+</form>
+<div class="nav-links">
+    <p class="text-gray-400">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</div>
+{% endblock %}

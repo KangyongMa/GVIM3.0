@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Advanced Chemistry Lab AI Assistant{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Welcome Back! Log In to Your Account</h1>
+<form method="POST" action="{{ url_for('login') }}" class="space-y-6">
+    <div>
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-input" placeholder="Enter your username" required>
+    </div>
+    <div>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-input" placeholder="••••••••" required>
+    </div>
+    <button type="submit" class="btn-primary">Log In Securely</button>
+</form>
+<div class="nav-links">
+    <p class="text-gray-400">Don't have an account yet? <a href="{{ url_for('register') }}">Register now</a></p>
+</div>
+{% endblock %}
